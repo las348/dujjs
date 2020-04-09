@@ -10,7 +10,7 @@ function writePassword() {
 
 }
 
-//formulas for characters
+//formulas to get characters
 function getSpecial() {
   symbols = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   return symbols[Math.floor(Math.random() * symbols.length)];
@@ -24,6 +24,7 @@ function getLower() {
 function getNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 48) + 10);
 }
+var getLength = ((userInitial >= 8) && (userInitial <= 128));
 
 console.log(getSpecial());
 console.log(getUpper());
@@ -35,35 +36,41 @@ var getCharacters = {
   "upper": "getUpper",
   "lower": "getLower",
   "number": "getNumber",
+  "length": "getLength",
 };
 
 
-var userLength = prompt("How long should the password be?");
-  var passLength = parseInt((userLength >= 8) && (userLength <= 128));
- 
+
 // Add event listener to generate button
-document.querySelector("#userPassword").addEventListener("click", promptMe); 
-function promptMe() {
+document.querySelector("#userPassword").addEventListener("click", function () {
   var userLength = prompt("How long should the password be?");
   var userInitial = parseInt(userLength);
-  if ((userInitial >= 8) && (userLength <= 128)) {
-    confirm("Should I include special characters?");
-   } else {
+  if ((userInitial >= 8) && (userInitial <= 128)) {
+    var yesSpecial = confirm("Should I include special characters?");
+  } else {
     alert("Start over");
-   }
-   if (true) {
-    confirm("Should I include an upper case letter?");
-   } else {
+  }
+  if (yesSpecial == true) {
+    var yesUpper = confirm("Should I include an upper case letter?");
+  } else {
     alert = "Start over";
-   }
-   if (true) {
-    confirm("Should I include a lower case letter?")
-   } else {
+  }
+  if (yesUpper == true) {
+    var yesLower = confirm("Should I include a lower case letter?")
+  } else {
     alert("Start over");
-   }
-   if (true) {
-    confirm("Should I include a number?");
-   } else {
+  }
+  if (yesLower == true) {
+    var yesNumber = confirm("Should I include a number?");
+  } else {
     alert("Start over");
-   }
-};
+  }
+  if (yesNumber == true) {
+    resultPassword = "2";
+  } else {
+    alert("Start over");
+  }
+  document.getElementById("password").innerHTML = resultPassword;
+  });
+
+
