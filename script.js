@@ -37,43 +37,33 @@ var getCharacters = {
   "number": "getNumber",
 };
 
-//var userLength;
 
+var userLength = prompt("How long should the password be?");
+  var passLength = parseInt((userLength >= 8) && (userLength <= 128));
+ 
 // Add event listener to generate button
-generateBtn.addEventListener("click", function () {
-  var userLength = prompt("Choose length of password, between 8 and 128");
-  if (userLength === ">= 8" && "<= 128") {
-    prompt("Should I include special characters?");
-  } else {
+document.querySelector("#userPassword").addEventListener("click", promptMe); 
+function promptMe() {
+  var userLength = prompt("How long should the password be?");
+  var userInitial = parseInt(userLength);
+  if ((userInitial >= 8) && (userLength <= 128)) {
+    confirm("Should I include special characters?");
+   } else {
     alert("Start over");
-  }
-})
-
-
-
-
-//uppercase
-if (true) {
-  confirm("Should I include an uppercase letter?");
- else {
+   }
+   if (true) {
+    confirm("Should I include an upper case letter?");
+   } else {
+    alert = "Start over";
+   }
+   if (true) {
+    confirm("Should I include a lower case letter?")
+   } else {
     alert("Start over");
-  }
-}
-
-//lowercase
-if (true) {
-  confirm("Should I include a lowercase letter?");
- else {
+   }
+   if (true) {
+    confirm("Should I include a number?");
+   } else {
     alert("Start over");
-  }
-}
-
-//numeric
-if (true) {
-  confirm("Should I include a number?");
- else {
-    alert("Start over");
-  }
-}
-
-
+   }
+};
