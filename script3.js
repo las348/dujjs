@@ -58,27 +58,22 @@ function generatePassword() {
         console.log(includeChars);
         console.log(guaranteedCharacters);
     }
-    if (yesNumber) {
+    //
+    if (yesNumber && yesLower && yesUpper) {
         for (var i = 0; i < numberArr.length; i++) {
             includeChars.push(numberArr[i]);
-        }
-
-        guaranteedCharacters.push(randomElement(numberArr));
-
-    }
-    if (yesLower) {
-        for (var i = 0; i < lowerArr.length; i++) {
+        } for (var i = 0; i < lowerArr.length; i++) {
             includeChars.push(lowerArr[i]);
+        } if (yesUpper) {
+            for (var i = 0; i < upperArr.length; i++) {
+                includeChars.push(upperArr[i]);
+            }
+            guaranteedCharacters.push(randomElement(numberArr));
+            guaranteedCharacters.push(randomElement(lowerArr));
+            guaranteedCharacters.push(randomElement(upperArr));
         }
-        guaranteedCharacters.push(randomElement(lowerArr));
-
     }
-    if (yesUpper) {
-        for (var i = 0; i < upperArr.length; i++) {
-            includeChars.push(upperArr[i]);
-        }
-        guaranteedCharacters.push(randomElement(upperArr));
-    }
+    //
     //empty newPassword array
     newPassword = [];
     //concat values
@@ -96,7 +91,7 @@ function generatePassword() {
 }
 
 
-document.querySelector("#userPassword").addEventListener("click", writePassword); 
+document.querySelector("#userPassword").addEventListener("click", writePassword);
 
 function getPasswordOptions() {
     userLen = prompt("How long would you like your password to be? Between 8 and 128.");
@@ -117,7 +112,6 @@ function getPasswordOptions() {
     yesUpper = confirm("Would you like to include uppercase letters?");
     yesLower = confirm("Would you like to include lowercase letters?");
     yesNumber = confirm("Would you like to include numbers?");
-
 
     if (!(yesSpecial) && !(yesUpper) && !(yesLower) && !(yesNumber)) {
         console.log("Not valid");
