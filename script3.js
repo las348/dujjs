@@ -1,8 +1,8 @@
 //formulas to get characters
 var specialOps = "!#$%&'()*+,-./:;<=>?@[^_`{|}~";
-var upperOps = String.fromCharCode(26) + 65;
-var lowerOps = String.fromCharCode(26) + 97;
-var numberOps = String.fromCharCode(48) + 10;
+var upperOps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerOps = "abcdefghijklmnopqrstuvwxyz";
+var numberOps = "0123456789";
 
 //The split() method is used to split a string into an array of substrings, and returns the new array.
 var upperArr = upperOps.split("");
